@@ -1,0 +1,28 @@
+version: '3.2'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: sasi
+      MYSQL_PASSWORD: sasi
+      MYSQL_DATABASE: sample
+    networks:
+      - adminernet                  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - adminernet
+
+
+
+networks:
+   adminernet:
+      external: true
